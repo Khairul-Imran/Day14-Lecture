@@ -1,0 +1,113 @@
+---------------------------------------------------------Assessment feedback---------------------------------------------------------
+Task 1 - Many people parsed through the data multiple times - it is okay in assessment, but IRL, not so efficient, as data can be very big.
+Ideally, need to parse it once, and get the info you need on the first time. Think how you can do it in a single parse.
+
+Task 2 - Just try again.
+
+Try Yong Le's assessment.
+
+----------------------------------------------------------Review of First 3 Days----------------------------------------------------------
+****Might come out for assessment.
+Need to know how the HTTP Request looks like -> See HHTP Post Slide in day12 or day13 slides
+- Know what each request and response contains
+- Know what the query string looks like
+- Need to distinguish between what headers the different responses have
+- GET will have "accept", while its response's content-type will have the same type.
+
+GET
+He showed an example of a controller class with its methods
+- He prefers us to not use models, and instead use the request parameters individually *************
+- @RequestParam...
+- or you can use a multi-value-map (with RequestParam) -> maps individual fields. 
+- All the data and values come in as strings. If the value is a number, you need to convert to an integer.
+
+He also showed an example using models (the Java way)
+- use @ModelAttribute -> shortcut is to just use Register register (instead of @ModelAttribute Register register)
+
+POST
+- Use @RequestBody with multi-value-map
+
+- He also showed a small summary on the board (refer to photo)
+
+
+***********
+HTML -> HTTP -> Spring Boot
+He mentioned that if you have either one of the HTML / HTTP / Spring Boot, you should be able reconstruct the other 2.
+- Potential assessment?
+
+
+
+---------------------------------------------------------------Lecture---------------------------------------------------------------
+- This lecture is devops-focused.
+
+
+Lecture Example
+- In our case, our index is static
+
+- He showed how to inspect the request headers in the browser.
+- Accept: .........
+- He showed what all the columns do - Headers /Payload/ etc.
+
+- he showed how to return a "ModelAndView" too******************
+- ModalAndView makes it so that you don't have to inject the model.
+
+****************************
+- he showed how  to package/compile your project too (for production environment?)
+- mvn clean package
+- mvn clean package -Dmaven.test.skip=true -> to skip the tests
+
+- How to run a jar file (found inside target):
+- java -jar <jarfilename>
+
+
+---------------------------------------------------------------Docker---------------------------------------------------------------
+* See slides too
+
+- Create a Dockerfile in the root
+- Go to Docker Hub, and search maven
+- When selecting a base image, only open "Official" or "Verified" ones.
+- Chose the official one, then filtered by tags - temurin-21
+- chose 3-eclipse-temurin-21
+
+- He explained why he set the environment variablel "PORT".
+- when deploying to the cloud provider, they will tell you which PORT to use.
+- SERVER_PORT is exclusive to spring boot.
+
+********************************
+Doing a "build"
+commands:
+docker build -t khairulimran/ssf-day14:v1.0.0 .
+
+Inside your Dockerfile:
+t is the tag (the name of our image)
+khairulimran - dockerhub account name
+after / -> whatever name you want to give to your image
+after : -> version (1.0.0 -> major, minor, patch?)
+the last '.' -> context -> in relation to the docker file, where can i find the files in the dockerfile
+-> need to always be relative to where the docker file is.
+
+When running the docker build command:
+docker build -t khairulimran/ssf-day14:v1.0.0 .
+
+I got an error as I didn't have the .mvn folder.
+-> to solve this issue, i ran the command -> mvn -N io.takari:maven:wrapper
+
+*******************************
+command:
+docker images 
+-> shows your image
+
+
+-> push image into your dockerhub account
+docker login
+
+*** WE also downloaded a "dive" file
+dive khairulimran/ssf-day14:v1.0.0 
+-> figure out why cannot
+
+
+push:
+docker push khairulimran/ssf-day14:v1.0.0
+
+---------------------------------------------------------------
+
