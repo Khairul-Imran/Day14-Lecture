@@ -76,7 +76,6 @@ Lecture Example
 ********************************
 Doing a "build"
 commands:
-docker build -t khairulimran/ssf-day14:v1.0.0 .
 
 Inside your Dockerfile:
 t is the tag (the name of our image)
@@ -111,3 +110,13 @@ docker push khairulimran/ssf-day14:v1.0.0
 
 ---------------------------------------------------------------
 
+
+new container:
+docker build -t khairulimran/ssf-day14rsvp:v1.0.0 .
+
+docker push khairulimran/ssf-day14rsvp:v1.0.0
+
+docker container run -d -p 8080:8080 khairulimran/ssf-day14rsvp:v1.0.0
+
+Lists running containers:
+docker container ps -a
